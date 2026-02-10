@@ -3,55 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SISTEM TERINKREPSI - PROTOKOL 0x666</title>
+    <title>DITZXSHADOW - Bug WhatsApp</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body onclick="startPanic()">
-    <div class="vignette"></div>
-    <div class="scanline"></div>
+<body>
+    <!-- Intro Screen -->
+    <div id="introScreen">
+        <div class="intro-video-container">
+            <video id="introVideo" class="intro-video" preload="auto">
+                <!-- Video akan di-set via JS -->
+                <source src="" type="video/mp4">
+                Browser Anda tidak mendukung video.
+            </video>
+        </div>
+        <div class="intro-loading-bar">
+            <div class="intro-progress" id="introProgress"></div>
+        </div>
+    </div>
 
-    <div class="main-container">
-        <header>
-            <div class="logo">GOVT-CYBER-CRIME</div>
-            <div class="node-status">NODE: <span class="blink">CONNECTED</span></div>
-        </header>
+    <!-- Hamburger Menu (3 Garis) -->
+    <div class="hamburger-menu" id="hamburgerMenu">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+    </div>
 
-        <div class="identity-box">
-            <div class="photo-wrapper">
-                <img src="target.jpg" id="targetImg">
-                <div class="laser"></div>
+    <!-- Side Menu -->
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-item" id="menuLogin">
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Login</span>
+        </div>
+        <div class="menu-item" id="menuProfile">
+            <i class="fas fa-user-circle"></i>
+            <span>Profile</span>
+        </div>
+        <div class="menu-item" id="menuChangePassword">
+            <i class="fas fa-key"></i>
+            <span>Ganti Password</span>
+        </div>
+        <div class="menu-item" id="menuBugList">
+            <i class="fas fa-bug"></i>
+            <span>Daftar Bug</span>
+        </div>
+        <div class="menu-item" id="menuComingSoon">
+            <i class="fas fa-database"></i>
+            <span>Panel Pytrodacl (Coming Soon)</span>
+        </div>
+        <div class="menu-item" id="menuLogout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="loginScreen">
+        <div class="login-video-container">
+            <video id="loginVideo" class="login-video" preload="auto" loop>
+                <!-- Video akan di-set via JS -->
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+        <h1 class="title">DITZXSHADOW</h1>
+        <div class="login-box">
+            <input type="text" id="usernameInput" class="login-input" placeholder="Masukkan Username" autocomplete="off">
+            <button id="loginBtn" class="login-btn">
+                <i class="fas fa-sign-in-alt"></i> LOGIN
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen">
+        <div class="loading-video-container">
+            <video id="loadingVideo" class="loading-video" preload="auto">
+                <!-- Video akan di-set via JS -->
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+        <div class="loading-text">MEMUAT DASHBOARD...</div>
+        <div class="loading-bar-container">
+            <div class="loading-progress" id="loadingProgress"></div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <div class="dashboard-video-container">
+            <video id="dashboardVideo" class="dashboard-video" preload="auto" loop>
+                <!-- Video akan di-set via JS -->
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+        <h1 class="dashboard-title">Ditxshadow</h1>
+        
+        <div class="input-section">
+            <div class="input-group">
+                <i class="fas fa-phone"></i>
+                <input type="tel" id="phoneInput" class="phone-input" placeholder="+62 812-3456-7890" autocomplete="off">
             </div>
-            <div class="ip-info">
-                <p>TARGET_IP: <span id="user-ip" class="red-glow">FETCHING...</span></p>
-                <p>OS_IDENT: <span id="device-info">MOBILE_SCAN</span></p>
-                <p>COORD: <span class="red-glow">LOCKED</span></p>
+            
+            <div class="select-group">
+                <i class="fas fa-cogs"></i>
+                <select id="bugSelect" class="bug-select">
+                    <option value="" disabled selected>Pilih Bug WhatsApp</option>
+                    <option value="crashx">1. Crash X</option>
+                    <option value="invisdelay">2. Invis Delay</option>
+                    <option value="shadow">3. Shadow</option>
+                    <option value="unli">4. Unli</option>
+                    <option value="ditzvvip">5. Ditzv VIP</option>
+                </select>
             </div>
+            
+            <button id="executeBtn" class="execute-btn">
+                <i class="fas fa-bolt"></i> EXECUTE BUG
+            </button>
         </div>
+    </div>
 
-        <div class="threat-manifesto">
-            <h2 class="alert-title">SISTEM DIKENDALIKAN</h2>
-            <div id="typing-text" class="message-area"></div>
-        </div>
-
-        <div class="console-log" id="logs">
-            <p class="green">[SYSTEM] Exploit successful...</p>
-        </div>
-
-        <div class="footer">
-            <div class="timer">PENGHANCURAN DATA: <span id="clock">05:00</span></div>
-            <div class="contact-box">
-                <p>HUBUNGI ADMIN: <b>ditzpiva@gmail.com</b></p>
-                <p>WHATSAPP: <b>0831-4187-6392</b></p>
+    <!-- Profile Modal -->
+    <div class="modal" id="profileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-circle"></i> PROFILE</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="profile-info">
+                    <div class="info-item">
+                        <span class="info-label">Username:</span>
+                        <span class="info-value" id="profileUsername">admin</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Status:</span>
+                        <span class="info-value premium">PREMIUM USER</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Bergabung:</span>
+                        <span class="info-value">01 Januari 2024</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <audio id="beep-bom" loop>
-        <source src="https://www.soundjay.com/buttons/beep-01a.mp3" type="audio/mpeg">
-    </audio>
+    <!-- Change Password Modal -->
+    <div class="modal" id="passwordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-key"></i> GANTI PASSWORD</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="password" id="currentPassword" class="modal-input" placeholder="Password Saat Ini">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="newPassword" class="modal-input" placeholder="Password Baru">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="confirmPassword" class="modal-input" placeholder="Konfirmasi Password Baru">
+                </div>
+                <button id="changePasswordBtn" class="modal-btn">
+                    <i class="fas fa-save"></i> SIMPAN PERUBAHAN
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast"></div>
 
     <script src="script.js"></script>
 </body>
-
 </html>
-
